@@ -20,4 +20,6 @@ def showdata(request):
             #  reg.save()
     else:
         fm=StudentRegistration();
-    return render(request,'enroll/addandshow.html',{'form':fm})
+    stud=User.objects.all() #to get all the stored data and indentation is also important otherwise 
+    # the referenced before assigned error so take care of the proper indentation
+    return render(request,'enroll/addandshow.html',{'form':fm,'stu':stud})
