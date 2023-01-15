@@ -3,6 +3,7 @@ from .forms import StudentRegistration
 from .models import User
 
 # Create your views here.
+#def show data will used to insert and retrive the data from the database
 def showdata(request):
     if(request.method=='POST'):
         fm=StudentRegistration(request.POST)
