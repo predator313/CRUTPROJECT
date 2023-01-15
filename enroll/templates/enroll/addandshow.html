@@ -32,7 +32,11 @@
           <td>{{st.password}}</td>
           <td>
             <a href="#" class="btn btn-warning btn-sm">Edit</a>
-            <a href="#"class="btn btn-danger btn-sm">Delete</a>
+            {% comment %} <a href="#"class="btn btn-danger btn-sm">Delete</a> {% endcomment %}
+            <form action="" method="POST" class="d-inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
           </td>
         </tr>
         {% endfor %}

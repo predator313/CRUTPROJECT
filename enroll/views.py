@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponseRedirect
 from .forms import StudentRegistration
 from .models import User
 
@@ -24,3 +24,11 @@ def showdata(request):
     stud=User.objects.all() #to get all the stored data and indentation is also important otherwise 
     # the referenced before assigned error so take care of the proper indentation
     return render(request,'enroll/addandshow.html',{'form':fm,'stu':stud})
+
+
+#delete_data() function is used to delete the data with the help of the dynamic urls
+def delete_data(request,id):
+    if(request.method=='POST'):
+        del_x=User.objects.get(pk=id)
+        del_x.delete()
+        return HttpResponseRedirect('hello/student')
