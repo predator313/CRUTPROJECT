@@ -32,3 +32,16 @@ def delete_data(request,id):
         del_x=User.objects.get(pk=id)
         del_x.delete()
         return HttpResponseRedirect('/hello/student/')
+
+
+#the update_data function is update the  data(which is done with the help of the edit button )
+def update_data(request,id):
+    if(request.method=='POST'):
+        pi=User.objects.get(pk=id)
+        fm=StudentRegistration(request.POST,instance=pi)
+        if(fm.is_valid()):
+            fm.save()
+    else:
+        pi=User.objects.get(pk=id)
+        fm=StudentRegistration(instance=pi)
+    return render(request,'enroll/update.html',{'form':fm})
