@@ -31,4 +31,4 @@ def delete_data(request,id):
     if(request.method=='POST'):
         del_x=User.objects.get(pk=id)
         del_x.delete()
-        return HttpResponseRedirect('hello/student')
+        return HttpResponseRedirect('/hello/student/')
